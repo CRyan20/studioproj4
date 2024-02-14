@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerMovementV2 : MonoBehaviour
 {
-    CharacterController controller;
+    public CharacterController controller;
     Animator anim;
 
     //movement
