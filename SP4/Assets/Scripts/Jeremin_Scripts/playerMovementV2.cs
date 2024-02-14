@@ -141,4 +141,6 @@ public class playerMovementV2 : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
         transform.Rotate(Vector3.up * mouseX);
     }
+
+
 }
