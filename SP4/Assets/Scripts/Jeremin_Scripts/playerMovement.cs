@@ -5,6 +5,8 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public CharacterController characterController;
+    public Animator animator;
+
     public float walkSpeed = 3f;
     public float sprintSpeed = 6f; // Speed when sprinting
     public float gravity = -9.81f;
@@ -27,12 +29,16 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("VerticalSpeed", velocity.y);
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
