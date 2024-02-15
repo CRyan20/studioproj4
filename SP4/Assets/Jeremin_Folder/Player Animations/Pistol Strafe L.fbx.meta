@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 65a608c6b9ec3cf46acea62981b61f58
+guid: 4857a7e0ce08fc1489c43b814314f051
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: DefaultPlayerSuit
-    second: {fileID: 2100000, guid: dd4e8ddbb2fc86b42a836071e75423fa, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
