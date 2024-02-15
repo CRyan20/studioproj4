@@ -90,6 +90,16 @@ public class ChaserAI : MonoBehaviour
             // Smoothly rotate towards the target rotation
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
+
+        //health check
+        if (healthSystem.currentHealth <= 0)
+        {
+            healthSystem.currentHealth = 0;
+            currState = EnemyState.DEAD;
+        }
+
+        //take damage
+        
     }
 
     void Patrol()
@@ -160,13 +170,6 @@ public class ChaserAI : MonoBehaviour
         animator.SetBool("Walking", true);
         animator.SetBool("Attack", true);
 
-        if (healthSystem.currentHealth <= 0)
-        {
-            Debug.Log("ruhroh");
-            healthSystem.currentHealth = 0;
-            currState = EnemyState.DEAD;
-        }
-
         //not in range
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > chaseRange)
@@ -178,16 +181,14 @@ public class ChaserAI : MonoBehaviour
 
     void Dead()
     {
-        //death animation here, destroy obj etc
-        animator.SetBool("Death", true);
-
+        chaser.velocity = Vector3.zero;
         StartCoroutine(DestroyAfterDeathAnimation());
     }
 
     IEnumerator DestroyAfterDeathAnimation()
     {
-        yield return new WaitForSeconds(2.52f);
-
+        animator.SetBool("Death", true);
+        yield return new WaitForSeconds(2.1f);
         Destroy(gameObject);
     }
 
